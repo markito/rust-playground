@@ -15,7 +15,7 @@ jobs:
     - name: Build
       run: cargo build --verbose
     - name: Use the hello world action 
-      uses: actions/kn-docker-action@v1
+      uses: markito/kn-docker-action@v1
       id: kn-helo
       with:
         who-to-greet: "Hello"
