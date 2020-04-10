@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -15,5 +14,14 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build
       run: cargo build --verbose
+    - name: Use the hello world action 
+      uses: actions/kn-docker-action@v1
+      id: kn-helo
+      with:
+        who-to-greet: "Hello"
     - name: Run tests
       run: cargo test --verbose
+    - name: Print output
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
+
+
