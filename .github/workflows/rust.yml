@@ -11,12 +11,11 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v1
     - name: Build
       run: cargo build --verbose
     - name: Use the hello world action 
       uses: markito/kn-docker-action@v1
-      id: kn-helo
+      id: hello
       with:
         who-to-greet: "Hello"
     - name: Run tests
