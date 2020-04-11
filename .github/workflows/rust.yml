@@ -10,14 +10,14 @@ jobs:
       matrix:
         os: [ubuntu-latest]
     steps:
-    - name: Build
-      run: cargo build
-#     - name: Use the hello world action 
-#       uses: markito/kn-docker-action@v0.0.1
-#       id: hello
-#       with:
-#         who-to-greet: "Hello"
-#     - name: Print output
-#       run: echo "The time was ${{ steps.hello.outputs.time }}"
+#     - name: Build
+#       run: cargo build
+    - name: Use the hello world action 
+      uses: markito/kn-docker-action@v0.0.1
+      id: hello
+      with:
+        who-to-greet: "Hello"
+    - name: Print output
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
 
 
