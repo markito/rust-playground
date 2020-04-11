@@ -12,14 +12,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows]
+        os: [ubuntu-latest]
 
     steps:
     - uses: actions/checkout@v2
     - name: Build
       run: cargo build --verbose
     - name: Use the hello world action 
-      uses: markito/kn-docker-action@v0.0.1
+      uses: markito/kn-docker-action@v0.0.2
       id: hello
       with:
         who-to-greet: "Hello"
@@ -27,3 +27,5 @@ jobs:
       run: echo "The time was ${{ steps.hello.outputs.time }}"
     - name: Run tests
       run: cargo test --verbose
+
+
