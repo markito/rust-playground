@@ -8,12 +8,22 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows]
 
     steps:
     - uses: actions/checkout@v2
     - name: Build
       run: cargo build --verbose
+    - name: Use the hello world action 
+      uses: markito/kn-docker-action@v0.0.1
+      id: hello
+      with:
+        who-to-greet: "Hello"
+    - name: Print output
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
     - name: Run tests
       run: cargo test --verbose
